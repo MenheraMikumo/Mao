@@ -6,7 +6,7 @@ Channel
 
 process Filter {
 
-    container "test"
+    container "911094685195.dkr.ecr.ap-northeast-1.amazonaws.com/test"
     publishDir "results"
     input:
         set val(smp),file(reads) from toFilter
