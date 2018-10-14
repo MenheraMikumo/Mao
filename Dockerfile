@@ -1,6 +1,9 @@
-FROM ubuntu:16.04
+FROM continuumio/miniconda:4.5.4
 MAINTAINER Menhera.Mikumo@gmail.com
-COPY ./bin /bin
-RUN apt-get update && apt-get install -y wget bzip2 libfindbin-libs-perl fastqc zip unzip
-RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && bash ~/miniconda.sh -b -p $HOME/miniconda && export PATH="$HOME/miniconda/bin:$PATH"
-RUN $HOME/miniconda/bin/pip install pipenv
+LABEL description="Docker image containing all requirements for alignments"
+COPY environment.yml /
+RUN apt-get update && apt-get install -y procps && apt-get clean -y
+RUN conda install conda=4.5.11
+RUN conda env create -f /environment.yml && conda clean -a
+ENV PATH /opt/conda/envs/nf-addons-align/bin:$PATH
+
