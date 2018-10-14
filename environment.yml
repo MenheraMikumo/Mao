@@ -1,0 +1,16 @@
+name: nf-addons-align
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - conda-forge::openjdk=8.0.144
+  - fastqc=0.11.8
+  - fastp=0.19.4
+  - mosdepth=0.2.3
+  - bwa=0.7.17
+  - minimap2=2.12
+  - sambamba=0.6.6
+  - samtools=1.9
+  - bowtie2=2.3.4.3
+
